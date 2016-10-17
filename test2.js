@@ -12,27 +12,19 @@ class MyTransform extends Transform {
         super(options);
     }
     _transform(chunk, enc, cb) {
-        /*
-        for(let i = 0; i < chunk.length; i ++){
-            let res = chunk[i].toString(16);
-            console.log(res);
-            this.push(res);
-        }
-         */
-         this.push(chunk);
+        console.log(chunk.toString("hex"));
+         this.push(chunk.toString("hex"));
 
-
-        //this.push(chunk);
         cb();
     }
 }
 const tr = new MyTransform();
 //input.pipe(output);
 
-input.pipe(tr).pipe(process.stdout);
-input.pipe(tr).pipe(output);
-/*
-input.pipe(tr).pipe(hash).pipe(output);
+//input.pipe(tr).pipe(process.stdout);
+//input.pipe(tr).pipe(output);
+
+input.pipe(tr).pipe(hash).pipe(process.stdout);
 input.pipe(tr).pipe(hash).pipe(output);
 
 /**
