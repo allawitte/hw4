@@ -18,14 +18,10 @@ class MyTransform extends Transform {
         cb();
     }
 }
-const tr = new MyTransform();
-//input.pipe(output);
 
-//input.pipe(tr).pipe(process.stdout);
-//input.pipe(tr).pipe(output);
 
-input.pipe(tr).pipe(hash).pipe(process.stdout);
-input.pipe(tr).pipe(hash).pipe(output);
+input.pipe(crypto.createHash('md5')).pipe(new MyTransform()).pipe(process.stdout);
+input.pipe(crypto.createHash('md5')).pipe(new MyTransform()).pipe(output);
 
 /**
  * Created by HP on 10/16/2016.
